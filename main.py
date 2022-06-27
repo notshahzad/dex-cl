@@ -67,14 +67,16 @@ images = {}
 s = struct.pack('HHHH',0,0,0,0)
 hw = fcntl.ioctl(1,termios.TIOCGWINSZ,s)
 hw = struct.unpack('HHHH',hw)
+init = True
 FetchManga(currentmanga)
 fetchChapter(chapters[currentmanga][f'{chapter}'])
 while 1:
     while 1:
         if reading:
-            if currentpanel == 1:
+            if init:
                 url = baseurl+"/data/"+panelurls[chapters[currentmanga][f'{chapter}']]['hash']+"/"+panelurls[chapters[currentmanga][f'{chapter}']][f'{currentpanel}']
                 fetchPanel(url)
+                init = False 
             if (keyboard.is_pressed("q")):
                 exit()
             if (keyboard.is_pressed("h") and currentpanel > 1):
