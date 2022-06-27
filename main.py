@@ -55,7 +55,7 @@ def FetchManga(mangaid):
         for j in chaps['volumes'][i]['chapters']:
             chapters[mangaid][j] = chaps['volumes'][i]['chapters'][j]['id']
 
-currentchapter = "484088b5-dc50-476e-9576-a6db27960116"
+currentmanga = "484088b5-dc50-476e-9576-a6db27960116"
 chapter = 14
 currentpanel = 1
 reading = True
