@@ -55,7 +55,7 @@ def FetchManga(mangaid):
         for j in chaps['volumes'][i]['chapters']:
             chapters[mangaid][j] = chaps['volumes'][i]['chapters'][j]['id']
 
-
+currentchapter = "484088b5-dc50-476e-9576-a6db27960116"
 chapter = 14
 currentpanel = 1
 reading = True
@@ -72,6 +72,9 @@ fetchChapter(chapters[currentmanga][f'{chapter}'])
 while 1:
     while 1:
         if reading:
+            if currentpanel == 1:
+                url = baseurl+"/data/"+panelurls[chapters[currentmanga][f'{chapter}']]['hash']+"/"+panelurls[chapters[currentmanga][f'{chapter}']][f'{currentpanel}']
+                fetchPanel(url)
             if (keyboard.is_pressed("q")):
                 exit()
             if (keyboard.is_pressed("h") and currentpanel > 1):
